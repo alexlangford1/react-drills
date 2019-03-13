@@ -1,18 +1,54 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      password: "",
+      username: "",
+    };
+  }
+
+  handleName = (e) => {
+    this.setState({ username: e });
+  };
+
+  handlePass = (e) => {
+    this.setState({ password: e });
+  };
+
+  handleSubmit = () => {
+    alert(
+      "Username: " +
+        " " +
+        this.state.username +
+        ", " +
+        "Password: " +
+        this.state.password,
+    );
+  };
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <input
+          type="text"
+          placeholder="username"
+          onChange={(e) => {
+            this.handleName(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          placeholder="password"
+          onChange={(e) => {
+            this.handlePass(e.target.value);
+          }}
+        />
+        <button type="submit" onClick={this.handleSubmit}>
+          Submit
+        </button>
       </div>
     );
   }
